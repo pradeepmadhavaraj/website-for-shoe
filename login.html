@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <style>
+        body {
+            background-color: #f8f9fa;
+            background-image: url("background.webp");
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+        }
+
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+    </style>
+    <title>Login - Ecommerce</title>
+</head>
+<body>
+  <form action="http://localhost:8001/sign_up" method="post">
+    <div class="login-container">
+      <div class="col-md-4">
+          <div class="card">
+              <div class="card-header text-center">
+                  <h3>Login to Your Account</h3>
+              </div>
+              <div class="card-body">
+                  <form>
+                      <div class="mb-3">
+                          <label for="email" class="form-label">Email</label>
+                          <input type="email" class="form-control" id="email" name="Email" placeholder="Enter your email">
+                      </div>
+                      <div class="mb-3">
+                          <label for="password" class="form-label">Password</label>
+                          <input type="password" class="form-control" id="password" name="Password" placeholder="Enter your password">
+                      </div>
+                      <div class="d-grid">
+                          <button type="submit" class="btn btn-primary">Login</button>
+                      </div>
+                  </form>
+              </div>
+              <div class="card-footer text-center">
+                  <p>Don't have an account? <a href="signup.html">Sign up</a></p>
+              </div>
+          </div>
+      </div>
+  </div>
+  </form>
+</body>
+</html>

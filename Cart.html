@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cart</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <style>
+        .navbar {
+            background-color: #fff;
+        }
+
+        .navbar-light .navbar-nav .nav-link {
+            color: #343a40;
+        }
+
+        .navbar-nav {
+            flex-direction: row;
+            justify-content: center;
+        }
+
+        .navbar-search {
+            margin-left: auto;
+        }
+
+        h2, h3 {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .btn-dark {
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* Additional cart styles */
+        .cart-item {
+            border: 1px solid #f0f0f0;
+            padding: 20px;
+            margin-bottom: 30px;
+            text-align: center; /* Center align the entire cart item */
+        }
+
+        .cart-item img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto; /* Center align the image */
+        }
+
+        .cart-total {
+            font-size: 20px;
+            font-weight: bold;
+            color: #dc3545;
+        }
+
+        /* Additional styles for buttons within cart items */
+        .cart-item-button {
+            display: block;
+            width: 100%;
+            margin-top: 10px;
+        }
+        #buy{
+            padding-left: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid p-0">
+        <div class="row">
+            <div class="col-md-12">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item"><a class="nav-link" href="Home.html">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="Men.html">Men</a></li>
+                            <li class="nav-item"><a class="nav-link" href="Women.html">Women</a></li>
+                            <li class="nav-item"><a class="nav-link" href="Children.html">Children</a></li>
+                            <li class="nav-item"><a class="nav-link" href="Contact-us.html">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    <div class="navbar-search ml-auto">
+                        <form class="form-inline my-2 my-lg-0">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <h1 class="text-center">Cart</h1>
+    <hr>
+    <br><br>
+
+    <!-- Cart items will be added dynamically here -->
+    <div class="container-fluid" id="cart-container">
+    </div>
+
+    <!-- Cart total -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <p class="cart-total">Total: ₹ <span id="cart-total">0.00</span></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript to add items to the cart dynamically -->
+    <script>
+        // Sample data for cart items
+        const cartItems = [
+            {
+                image: 'Men1.webp',
+                title: 'Sustainable Materials',
+                description: 'Nike Revolution 6 Men\'s Running Shoes (Extra Wide)',
+                price: 3695.00,
+            },
+            {
+                image: 'Men2.webp',
+                title: 'Bestseller',
+                description: 'Nike Air Force Women\'s Shoes',
+                price: 9695.00,
+            },
+        ];
+
+        // Function to add items to the cart
+        function addItemToCart(item) {
+            const cartContainer = document.getElementById('cart-container');
+            const cartTotal = document.getElementById('cart-total');
+
+            // Create a new cart item element
+            const cartItem = document.createElement('div');
+            cartItem.classList.add('cart-item');
+
+            // Set the inner HTML for the cart item
+            cartItem.innerHTML = `
+                <img src="${item.image}" class="rounded mx-auto d-block" height="400">
+                <h2 style="color: lightsalmon;">${item.title}</h2>
+                <p>
+                    ${item.description}<br><br>
+                    MRP : ₹ ${item.price.toFixed(2)}<br>
+                    incl. of taxes<br>
+                    (Also includes all applicable duties)
+                </p>
+                <button type="button" class="btn btn-danger cart-item-button">Remove from Cart</button>
+            `;
+
+            // Add the cart item to the cart container
+            cartContainer.appendChild(cartItem);
+
+            // Update the cart total
+            const totalPrice = cartItems.reduce((total, item) => total + item.price, 0);
+            cartTotal.textContent = totalPrice.toFixed(2);
+        }
+
+        // Add items to the cart
+        cartItems.forEach(addItemToCart);
+    </script>
+     <a id='buy' href="Placeyourorder.html"><button type="button" class="btn btn-danger">Buy now</button></a>
+</body>
+</html>
